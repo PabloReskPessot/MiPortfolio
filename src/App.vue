@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import BarraLateral from './components/BarraLateral.vue';
-import Hero from './components/Hero.vue';
+import BarraLateral from "./components/BarraLateral.vue";
+import Hero from "./components/Hero.vue";
+import ProjectDrawer from "./components/ProjectDrawer.vue";
 
+import { useProjectDrawer } from "@/components/useProjectDrawer";
+const drawer = useProjectDrawer();
 </script>
+
 <template>
   <div class="layout">
     <aside class="left">
@@ -17,10 +20,15 @@ import Hero from './components/Hero.vue';
       <p class="muted">La página aún está en desarrollo.</p>
       <p>Te dejo dos proyectos para que veas mi trabajo:</p>
 
-      <!-- Acá van tus cards -->
-      <!-- <Projects /> -->
+      <div class="botonesproyecto">
+        <button class="proyecto" type="button" @click="drawer.open('fasty')">Fasty</button>
+        <button class="proyecto" type="button" @click="drawer.open('etiquetadora')">Etiquetadora</button>
+      </div>
     </main>
   </div>
+
+  <!-- ✅ montalo afuera del layout -->
+  <ProjectDrawer />
 </template>
 
 <style scoped>
@@ -66,5 +74,20 @@ import Hero from './components/Hero.vue';
   .leftInner{
     position: static;
   }
+}
+button.proyecto{
+  background-color: #c1ff72;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.botonesproyecto{
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  padding: auto;
 }
 </style>

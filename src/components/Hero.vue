@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import { useProjectDrawer } from "@/components/useProjectDrawer";
+const drawer = useProjectDrawer();
+</script>
+
 <template>
   <section class="hero">
     <div class="heroHeader">
@@ -16,7 +21,13 @@
 
       <div class="ctaRow">
         <a class="btn primary" href="#" target="_blank" rel="noreferrer">Descargar CV</a>
-        <a class="btn" href="#" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn" href="https://github.com/PabloReskPessot" target="_blank" rel="noreferrer">GitHub</a>
+
+        <p class="bio">
+          el portfolio está en desarrollo, mientras tanto te dejo una muestra de los proyectos que pueden ser mas utiles:
+        </p>
+        <button class="btn" type="button" @click="drawer.open('fasty')">Fasty</button>
+        <button class="btn" type="button" @click="drawer.open('etiquetadora')">Etiquetadora</button>
       </div>
     </div>
   </section>
@@ -84,6 +95,7 @@
 
 .ctaRow{
   display: flex;
+  flex-wrap: wrap;     
   gap: 10px;
   margin-top: 6px;
 }
@@ -99,11 +111,19 @@
   text-decoration: none;
   color: #111;
   font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  background: transparent;
 }
 
 .btn.primary{
   background: #1fbf6a;
   border-color: transparent;
   color: white;
+  white-space: nowrap;
+}
+
+@media (max-width: 420px){
+  .btn{ width: 100%; }
 }
 </style>
